@@ -84,7 +84,7 @@ class LinkView(object):
     queryset.
     """
     def get_queryset(self):
-        return Link.objects.published().select_related(
+        return Link.objects.published().prefetch_related(
             "user",
             "user__%s" % USER_PROFILE_RELATED_NAME
         )
